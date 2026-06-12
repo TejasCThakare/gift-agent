@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gift Agent — Review UI</title>
+<style>
+  :root {
+    --bg: #f8f8f6;
+    --card: #ffffff;
+    --border: #e0dfd8;
+    --text: #1a1a18;
+    --muted: #6b6a65;
+    --accent: #2563eb;
+    --green: #15803d;
+    --yellow: #b45309;
+    --red: #b91c1c;
+    --green-bg: #f0fdf4;
+    --yellow-bg: #fffbeb;
+    --red-bg: #fef2f2;
+    --radius: 8px;
+    --font: system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+
+  .header { background: var(--card); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+  .header h1 { font-size: 18px; font-weight: 600; }
+  .header span { color: var(--muted); font-size: 13px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+  .section h2 { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+
+  .start-form { display: flex; flex-direction: column; gap: 12px; }
+  .start-form textarea { width: 100%; height: 200px; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius); font-family: monospace; font-size: 13px; resize: vertical; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius); border: none; cursor: pointer; font-size: 14px; font-weight: 500; transition: opacity 0.15s; }
+  .btn:hover { opacity: 0.85; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-approve { background: var(--green); color: #fff; }
+  .btn-reject { background: var(--red); color: #fff; }
+  .btn-edit { background: var(--accent); color: #fff; }
+  .btn-regen { background: var(--yellow); color: #fff; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-save { background: #0f172a; color: #fff; }
+
+  .signal-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 500; }
+  .tag-strong { background: #dcfce7; color: #15803d; }
+  .tag-weak { background: #fef9c3; color: #713f12; }
+  .tag-borderline { background: #ffedd5; color: #9a3412; }
+  .tag-dropped { background: #fee2e2; color: #991b1b; text-decoration: line-through; }
+
+  .evidence-entry { margin-bottom: 10px; }
+  .evidence-signal { font-weight: 600; font-size: 13px; }
+  .evidence-quote { font-size: 12px; color: var(--muted); background: var(--bg); padding: 4px 8px; border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; margin-top: 4px; font-style: italic; }
+
+  .gift-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .gift-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; position: relative; }
+  .gift-card.risk-low { border-left: 3px solid var(--green); }
+  .gift-card.risk-medium { border-left: 3px solid #d97706; }
+  .gift-card.risk-high { border-left: 3px solid var(--red); }
+  .gift-rank { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .gift-name { font-size: 15px; font-weight: 600; margin: 4px 0; }
+  .gift-meta { display: flex; gap: 10px; font-size: 12px; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; }
+  .confidence-badge { padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+  .conf-low { background: var(--green-bg); color: var(--green); }
+  .conf-medium { background: var(--yellow-bg); color: var(--yellow); }
+  .conf-high { background: var(--red-bg); color: var(--red); }
+  .gift-reasoning { font-size: 13px; color: var(--muted); margin: 8px 0; }
+  .gift-message { font-size: 13px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 8px 10px; margin: 8px 0; font-style: italic; color: #1e3a5f; }
+  .gift-url a { font-size: 12px; color: var(--accent); word-break: break-all; }
+  .evidence-cites { margin-top: 8px; }
+  .cite { font-size: 11px; color: var(--muted); background: var(--bg); padding: 2px 6px; border-radius: 4px; margin: 2px 0; display: block; }
+
+  .val-table { width: 100%; font-size: 12px; border-collapse: collapse; }
+  .val-table th { text-align: left; padding: 6px 8px; background: var(--bg); border-bottom: 1px solid var(--border); font-weight: 600; color: var(--muted); }
+  .val-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .val-pass { color: var(--green); font-weight: 600; }
+  .val-fail { color: var(--red); }
+  .val-partial { color: var(--yellow); }
+
+  .save-bar { background: var(--green-bg); border: 1px solid #bbf7d0; border-radius: var(--radius); padding: 12px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .save-bar p { font-size: 13px; color: var(--green); flex: 1; }
+
+  .review-area { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: var(--radius); padding: 20px; margin-top: 16px; }
+  .review-area h2 { color: #0369a1; margin-bottom: 14px; font-size: 15px; }
+  .review-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .review-form { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .review-form.active { display: flex; }
+  .review-form input, .review-form textarea, .review-form select { padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 14px; font-family: var(--font); }
+
+  .escalation-banner { background: var(--yellow-bg); border: 1px solid #fcd34d; border-radius: var(--radius); padding: 14px; margin-bottom: 16px; }
+  .escalation-banner h3 { color: var(--yellow); font-size: 14px; margin-bottom: 6px; }
+  .escalation-banner p { font-size: 13px; color: var(--yellow); }
+
+  .history-entry { padding: 8px; background: var(--bg); border-radius: 6px; margin-bottom: 6px; font-size: 12px; }
+  .history-action { font-weight: 700; text-transform: uppercase; font-size: 11px; }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; background: #e0f2fe; color: #0369a1; }
+
+  .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 8px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .collapsible summary { cursor: pointer; font-size: 13px; color: var(--accent); padding: 4px 0; }
+  .collapsible summary:hover { opacity: 0.8; }
+
+  #toast { position: fixed; bottom: 24px; right: 24px; background: #1a1a18; color: #fff; padding: 10px 18px; border-radius: var(--radius); font-size: 13px; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 1000; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🎁 Gift Agent</h1>
+    <span>AI-powered hyper-personalised gift recommendations</span>
+  </div>
+  <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+    <span id="thread-display" style="font-size:12px; color:var(--muted); font-family:monospace;"></span>
+    <span class="status-badge" id="status-badge">Ready</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STEP 1: Input -->
+  <div class="section" id="input-section">
+    <h2>Contact Input</h2>
+    <div class="start-form">
+      <div style="font-size:13px; color:var(--muted); margin-bottom:4px;">
+        Paste contact JSON or load a sample.
+      </div>
+      <textarea id="contact-input" placeholder='{"name": "Aarav Mehta", "role": "VP Sales", ...}'></textarea>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="run-btn" onclick="runWorkflow()">
+          <span id="run-spinner" class="spinner" style="display:none;"></span>
+          Run Workflow
+        </button>
+        <button class="btn btn-outline" onclick="loadSample()">Load Sample</button>
+        <button class="btn btn-outline" onclick="document.getElementById('contact-input').value=''">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Results -->
+  <div id="results-section" style="display:none;">
+
+    <!-- Escalation banner -->
+    <div id="escalation-banner" class="escalation-banner" style="display:none;">
+      <h3>⚠ Escalation Triggered</h3>
+      <p id="escalation-notes-text"></p>
+    </div>
+
+    <!-- Save / Download bar -->
+    <div class="save-bar" id="save-section" style="display:none;">
+      <p>✓ Output saved to <code>artifacts/</code> on server. Download a copy below.</p>
+      <button class="btn btn-save" onclick="saveOutput()">⬇ Download Output JSON</button>
+      <span id="save-status" style="font-size:12px; color:var(--green);"></span>
+    </div>
+
+    <!-- Signals -->
+    <div class="section" id="signals-section">
+      <h2>Profile Signals Extracted</h2>
+      <div id="signals-display"></div>
+    </div>
+
+    <!-- Evidence map -->
+    <details class="section collapsible">
+      <summary><strong>Evidence Map</strong> — exact profile quotes that grounded each signal</summary>
+      <div id="evidence-display" style="margin-top:12px;"></div>
+    </details>
+
+    <!-- Search trace -->
+    <details class="section collapsible">
+      <summary><strong>Search Trace</strong> — queries used and validation results</summary>
+      <div id="search-trace-display" style="margin-top:12px;"></div>
+    </details>
+
+    <!-- Gift recommendations -->
+    <div class="section">
+      <h2>Recommended Gifts</h2>
+      <div class="gift-grid" id="gifts-display"></div>
+    </div>
+
+    <!-- Review history -->
+    <div class="section" id="history-section" style="display:none;">
+      <h2>Review History</h2>
+      <div id="history-display"></div>
+    </div>
+
+    <!-- Human review actions -->
+    <div class="review-area" id="review-area">
+      <h2>Your Review</h2>
+      <div class="review-actions">
+        <button class="btn btn-approve" onclick="showAction('approve')">✓ Approve</button>
+        <button class="btn btn-reject" onclick="showAction('reject')">✗ Reject</button>
+        <button class="btn btn-edit" onclick="showAction('edit')">✎ Edit</button>
+        <button class="btn btn-regen" onclick="showAction('regenerate')">↻ Regenerate</button>
+      </div>
+
+      <div class="review-form" id="form-approve">
+        <p style="font-size:13px;">Accept these recommendations as-is. They will be saved and marked as approved.</p>
+        <button class="btn btn-approve" onclick="submitReview('approve')">Confirm Approval</button>
+      </div>
+
+      <div class="review-form" id="form-reject">
+        <label style="font-size:13px; font-weight:600;">Rejection reason (required):</label>
+        <textarea id="reject-reason" rows="3" placeholder="What's wrong? The LLM will re-rank avoiding these issues..."></textarea>
+        <button class="btn btn-reject" onclick="submitReview('reject')">Submit Rejection → Re-rank</button>
+      </div>
+
+      <div class="review-form" id="form-edit">
+        <label style="font-size:13px; font-weight:600;">Gift to edit:</label>
+        <select id="edit-gift-index">
+          <option value="0">Gift #1</option>
+          <option value="1">Gift #2</option>
+          <option value="2">Gift #3</option>
+        </select>
+        <label style="font-size:13px; font-weight:600;">Field to edit:</label>
+        <select id="edit-field">
+          <option value="personalised_message">Personalised message</option>
+          <option value="why_this_gift">Why this gift</option>
+          <option value="personalisation_reasoning">Personalisation reasoning</option>
+          <option value="assumptions">Assumptions</option>
+        </select>
+        <label style="font-size:13px; font-weight:600;">New value:</label>
+        <textarea id="edit-value" rows="3" placeholder="New text for the selected field..."></textarea>
+        <button class="btn btn-edit" onclick="submitReview('edit')">Apply Edit → Done</button>
+      </div>
+
+      <div class="review-form" id="form-regenerate">
+        <label style="font-size:13px; font-weight:600;">Notes for regeneration:</label>
+        <textarea id="regen-notes" rows="3" placeholder="What should change? e.g. 'Focus more on cricket', 'Avoid tech gadgets'..."></textarea>
+        <button class="btn btn-regen" onclick="submitReview('regenerate')">Regenerate → Re-score + Re-rank</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Past runs -->
+  <div class="section" style="margin-top:24px;">
+    <h2>Past Runs</h2>
+    <button class="btn btn-outline" onclick="loadRuns()" style="margin-bottom:12px;">Refresh</button>
+    <div id="runs-display"><span style="color:var(--muted); font-size:13px;">Click Refresh to load past runs.</span></div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+const API = '';
+let currentThreadId = null;
+let currentPayload = null;
+
+const SAMPLE_CONTACT = {
+  "name": "Aarav Mehta",
+  "role": "VP Sales",
+  "company": "Acme Corp",
+  "location": "Bengaluru, India",
+  "linkedin_profile": {
+    "headline": "VP Sales at Acme Corp | Enterprise SaaS | GTM Leadership",
+    "about": "I enjoy building high-performing revenue teams and scaling SaaS businesses across India and Southeast Asia.",
+    "experience": [
+      {"title": "VP Sales", "company": "Acme Corp", "description": "Leading enterprise sales, strategic accounts, and GTM expansion."},
+      {"title": "Regional Sales Director", "company": "Salesforce", "description": "Managed enterprise accounts across BFSI and retail."}
+    ],
+    "recent_posts": [
+      "Great sales teams are built on trust, coaching, and consistency.",
+      "India's SaaS ecosystem is entering an exciting new phase.",
+      "Still recovering from yesterday's India vs Australia match. What a game!"
+    ],
+    "recent_comments": [
+      "Completely agree — pipeline discipline matters more than heroic end-of-quarter selling.",
+      "Loved this take on customer-led growth.",
+      "Cricket teaches leadership better than most management books."
+    ],
+    "engaged_topics": ["Cricket", "Revenue leadership", "SaaS GTM", "Customer-led growth", "Team building"]
+  },
+  "relationship_context": {
+    "relationship_type": "Prospective customer",
+    "last_interaction": "Positive discovery call last week",
+    "business_goal": "Nurture relationship before follow-up meeting"
+  },
+  "gift_context": {
+    "occasion": "Post-meeting thank you",
+    "budget_min": 3000,
+    "budget_max": 5000,
+    "currency": "INR",
+    "country": "India"
+  }
+};
+
+function loadSample() {
+  document.getElementById('contact-input').value = JSON.stringify(SAMPLE_CONTACT, null, 2);
+}
+
+async function runWorkflow() {
+  const input = document.getElementById('contact-input').value.trim();
+  if (!input) { toast('Please paste contact JSON first.'); return; }
+
+  let contact;
+  try { contact = JSON.parse(input); } catch(e) { toast('Invalid JSON: ' + e.message); return; }
+
+  setStatus('Running…', 'processing');
+  setRunning(true);
+
+  try {
+    const res = await fetch(API + '/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contact }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Workflow failed');
+
+    currentThreadId = data.thread_id;
+    currentPayload = data.review_payload;
+
+    document.getElementById('thread-display').textContent = 'Thread: ' + currentThreadId;
+    setStatus('Awaiting Review', 'review');
+    renderResults(data.review_payload);
+
+  } catch(e) {
+    toast('Error: ' + e.message);
+    setStatus('Error', 'error');
+  } finally {
+    setRunning(false);
+  }
+}
+
+async function submitReview(action) {
+  if (!currentThreadId) { toast('No active workflow.'); return; }
+
+  const body = { action };
+
+  if (action === 'reject') {
+    const reason = document.getElementById('reject-reason').value.trim();
+    if (!reason) { toast('Please provide a rejection reason.'); return; }
+    body.reason = reason;
+  }
+  if (action === 'regenerate') {
+    body.notes = document.getElementById('regen-notes').value.trim();
+  }
+  if (action === 'edit') {
+    body.edit_payload = {
+      gift_index: parseInt(document.getElementById('edit-gift-index').value),
+      field: document.getElementById('edit-field').value,
+      new_value: document.getElementById('edit-value').value.trim(),
+    };
+    if (!body.edit_payload.new_value) { toast('Please enter the new value.'); return; }
+  }
+
+  setStatus('Processing review…', 'processing');
+
+  try {
+    const res = await fetch(API + '/review/' + currentThreadId, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Review failed');
+
+    if (action === 'approve' || action === 'edit') {
+      setStatus('Approved ✓', 'done');
+      document.getElementById('review-area').style.display = 'none';
+      // Update save bar message
+      document.getElementById('save-section').style.display = 'flex';
+      toast('Approved and saved to artifacts/!');
+      // Auto-download on approve
+      currentPayload = { ...currentPayload, ...data.final_recommendations };
+      saveOutput();
+    } else {
+      currentPayload = data.final_recommendations;
+      setStatus('Updated — Awaiting Review', 'review');
+      renderResults(data.final_recommendations);
+      toast('Updated recommendations ready for review.');
+    }
+
+  } catch(e) {
+    toast('Review error: ' + e.message);
+    setStatus('Error', 'error');
+  }
+}
+
+function saveOutput() {
+  if (!currentPayload) { toast('No output to save.'); return; }
+
+  const recs = currentPayload.final_recommendations || currentPayload;
+  const contactName = currentPayload.contact_name || recs.contact_name || 'contact';
+
+  // Build output matching exact assignment schema
+  const output = {
+    contact_name: contactName,
+    profile_signals: {
+      strong_signals: currentPayload.safe_signals?.strong || recs.profile_signals?.strong_signals || [],
+      weak_signals: currentPayload.safe_signals?.weak || recs.profile_signals?.weak_signals || [],
+      signals_to_avoid: currentPayload.signals_to_avoid || recs.profile_signals?.signals_to_avoid || [
+        "Do not infer religion, politics, health, family status, or other sensitive personal attributes"
+      ],
+    },
+    search_trace: {
+      queries_used: currentPayload.queries_used || recs.search_trace?.queries_used || [],
+      products_considered_count: recs.search_trace?.products_considered_count || 0,
+    },
+    recommended_gifts: (currentPayload.ranked_gifts || recs.recommended_gifts || []).map(g => ({
+      rank: g.rank,
+      gift_name: g.gift_name,
+      product_url: g.product_url,
+      store: g.store,
+      estimated_price: g.estimated_price,
+      why_this_gift: g.why_this_gift,
+      personalisation_reasoning: g.personalisation_reasoning,
+      personalised_message: g.personalised_message,
+      confidence_score: g.confidence || g.confidence_score,
+      risk_level: g.risk_level,
+      assumptions: g.assumptions || [],
+    })),
+    human_review: {
+      status: recs.human_review?.status || 'pending_review',
+      available_actions: ['approve', 'reject', 'edit', 'regenerate'],
+    },
+  };
+
+  const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `gift_${contactName.replace(/\s+/g, '_')}_${currentThreadId || 'output'}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  document.getElementById('save-status').textContent = '✓ Downloaded!';
+  setTimeout(() => document.getElementById('save-status').textContent = '', 3000);
+  toast('Output JSON downloaded!');
+}
+
+function renderResults(payload) {
+  document.getElementById('results-section').style.display = 'block';
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('save-section').style.display = 'flex';
+
+  const recs = payload.final_recommendations || payload;
+
+  if (payload.escalation_flag || recs.escalation_flag) {
+    const notes = payload.escalation_notes || recs.escalation_notes || '';
+    document.getElementById('escalation-banner').style.display = 'block';
+    document.getElementById('escalation-notes-text').textContent = notes;
+  }
+
+  renderSignals(payload.safe_signals || recs.profile_signals || {});
+  renderEvidence(payload.evidence_map || {});
+  renderSearchTrace(payload, recs);
+
+  const gifts = payload.ranked_gifts || recs.recommended_gifts || [];
+  renderGifts(gifts);
+
+  const history = payload.review_history || recs.review_history || [];
+  if (history.length > 0) {
+    renderHistory(history);
+    document.getElementById('history-section').style.display = 'block';
+  }
+
+  ['approve','reject','edit','regenerate'].forEach(a => {
+    document.getElementById('form-' + a).classList.remove('active');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderSignals(signals) {
+  const container = document.getElementById('signals-display');
+  const strong = signals.strong || signals.strong_signals || [];
+  const weak = signals.weak || signals.weak_signals || [];
+  const borderline = signals.borderline || [];
+  const dropped = signals.dropped || [];
+
+  let html = '<div class="signal-list">';
+  strong.forEach(s => { html += `<span class="tag tag-strong">● ${escHtml(s)}</span>`; });
+  weak.forEach(s => { html += `<span class="tag tag-weak">○ ${escHtml(s)}</span>`; });
+  borderline.forEach(s => { html += `<span class="tag tag-borderline">⚠ ${escHtml(s)}</span>`; });
+  dropped.forEach(d => {
+    const s = typeof d === 'string' ? d : d.signal || '';
+    if (s) html += `<span class="tag tag-dropped">✗ ${escHtml(s)}</span>`;
+  });
+  html += '</div>';
+
+  if (dropped.length > 0) {
+    html += '<p style="font-size:12px; color:var(--red); margin-top:8px;">⚠ Some signals were filtered for safety.</p>';
+  }
+  container.innerHTML = html;
+}
+
+function renderEvidence(evidenceMap) {
+  const container = document.getElementById('evidence-display');
+  if (!evidenceMap || Object.keys(evidenceMap).length === 0) {
+    container.innerHTML = '<p style="color:var(--muted); font-size:13px;">No evidence map available.</p>';
+    return;
+  }
+  let html = '';
+  for (const [signal, quotes] of Object.entries(evidenceMap)) {
+    html += `<div class="evidence-entry">
+      <div class="evidence-signal">${escHtml(signal)}</div>`;
+    (quotes || []).forEach(q => {
+      html += `<div class="evidence-quote">"${escHtml(q)}"</div>`;
+    });
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function renderSearchTrace(payload, recs) {
+  const container = document.getElementById('search-trace-display');
+  const queries = payload.queries_used || (recs.search_trace ? recs.search_trace.queries_used : []) || [];
+  const products = payload.scored_products || [];
+  const trace = recs.search_trace || {};
+
+  let html = `<p style="font-size:13px; margin-bottom:10px; color:var(--muted);">
+    Queries: ${queries.length} | Products found: ${trace.products_considered_count || products.length} |
+    Validated: ${trace.validated_count || ''} | Retries: ${trace.retry_count || payload.retry_count || 0}
+  </p>`;
+
+  if (queries.length > 0) {
+    html += '<p style="font-size:12px; font-weight:600; margin-bottom:6px; color:var(--muted);">Queries used:</p>';
+    queries.forEach(q => {
+      html += `<div style="font-size:12px; padding:3px 8px; background:var(--bg); border-radius:4px; margin-bottom:3px; font-family:monospace;">${escHtml(q)}</div>`;
+    });
+  }
+
+  if (products.length > 0) {
+    html += '<p style="font-size:12px; font-weight:600; margin:12px 0 6px; color:var(--muted);">Scored products:</p>';
+    html += '<table class="val-table"><thead><tr><th>Product</th><th>Store</th><th>Price</th><th>Score</th><th>Tier</th></tr></thead><tbody>';
+    products.slice(0, 10).forEach(p => {
+      const tier = p.validation_tier || 'unknown';
+      const tierClass = tier === 'pass' ? 'val-pass' : tier === 'partial' ? 'val-partial' : 'val-fail';
+      html += `<tr>
+        <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escHtml(p.title || '')}">${escHtml((p.title || '').substring(0, 50))}</td>
+        <td>${escHtml(p.store || '')}</td>
+        <td>${escHtml(p.extracted_price_str || 'N/A')}</td>
+        <td>${(p.confidence || 0).toFixed ? (p.confidence || 0).toFixed(2) : p.confidence}</td>
+        <td class="${tierClass}">${tier}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+  }
+
+  container.innerHTML = html;
+}
+
+function renderGifts(gifts) {
+  const container = document.getElementById('gifts-display');
+  if (!gifts || gifts.length === 0) {
+    container.innerHTML = '<p style="color:var(--red);">No recommendations generated.</p>';
+    return;
+  }
+
+  container.innerHTML = gifts.map(gift => {
+    const rank = gift.rank;
+    const name = gift.gift_name || '';
+    const url = gift.product_url || '';
+    const store = gift.store || '';
+    const price = gift.estimated_price || 'N/A';
+    const confidence = gift.confidence || gift.confidence_score || 0;
+    const risk = gift.risk_level || 'unknown';
+    const why = gift.why_this_gift || '';
+    const reasoning = gift.personalisation_reasoning || '';
+    const message = gift.personalised_message || '';
+    const cites = gift.evidence_citations || [];
+    const assumptions = gift.assumptions || [];
+
+    const riskClass = risk === 'low' ? 'risk-low' : risk === 'medium' ? 'risk-medium' : 'risk-high';
+    const confClass = risk === 'low' ? 'conf-low' : risk === 'medium' ? 'conf-medium' : 'conf-high';
+    const confVal = typeof confidence === 'number' ? confidence.toFixed(2) : confidence;
+
+    let citesHtml = '';
+    if (cites.length > 0) {
+      citesHtml = `<div class="evidence-cites"><p style="font-size:11px; font-weight:600; color:var(--muted); margin-bottom:3px;">Evidence citations:</p>`;
+      cites.forEach(c => { citesHtml += `<span class="cite">"${escHtml(c)}"</span>`; });
+      citesHtml += '</div>';
+    }
+
+    let assumptionsHtml = '';
+    if (assumptions.length > 0) {
+      assumptionsHtml = `<p style="font-size:11px; color:var(--muted); margin-top:6px;">Assumptions: ${assumptions.map(a => escHtml(a)).join('; ')}</p>`;
+    }
+
+    return `
+    <div class="gift-card ${riskClass}">
+      <div class="gift-rank">Rank #${rank}</div>
+      <div class="gift-name">${escHtml(name)}</div>
+      <div class="gift-meta">
+        <span>${escHtml(store)}</span>
+        <span>${escHtml(price)}</span>
+        <span class="confidence-badge ${confClass}">${confVal} confidence · ${risk} risk</span>
+      </div>
+      <p class="gift-reasoning">${escHtml(why)}</p>
+      <p style="font-size:12px; color:var(--muted); margin-bottom:6px;">${escHtml(reasoning)}</p>
+      ${citesHtml}
+      <div class="gift-message">"${escHtml(message)}"</div>
+      <div class="gift-url"><a href="${escHtml(url)}" target="_blank" rel="noopener noreferrer">${escHtml(url)}</a></div>
+      ${assumptionsHtml}
+    </div>`;
+  }).join('');
+}
+
+function renderHistory(history) {
+  const container = document.getElementById('history-display');
+  container.innerHTML = history.map(entry => {
+    const action = entry.action || '';
+    const reason = entry.reason || '';
+    const notes = entry.notes || '';
+    const ts = entry.timestamp || '';
+    const colors = { approve: 'var(--green)', reject: 'var(--red)', regenerate: 'var(--yellow)', edit: 'var(--accent)' };
+    return `<div class="history-entry">
+      <span class="history-action" style="color:${colors[action] || 'var(--text)'};">${action}</span>
+      <span style="color:var(--muted); margin-left:8px; font-size:11px;">${ts}</span>
+      ${reason ? `<p style="margin-top:3px; font-size:12px;">Reason: ${escHtml(reason)}</p>` : ''}
+      ${notes && notes !== reason ? `<p style="color:var(--muted); font-size:12px;">Notes: ${escHtml(notes)}</p>` : ''}
+    </div>`;
+  }).join('');
+}
+
+async function loadRuns() {
+  try {
+    const res = await fetch(API + '/runs');
+    const data = await res.json();
+    const container = document.getElementById('runs-display');
+    if (!data.runs || data.runs.length === 0) {
+      container.innerHTML = '<p style="color:var(--muted); font-size:13px;">No past runs found.</p>';
+      return;
+    }
+    const statusColors = {
+      approved: 'var(--green)', rejected: 'var(--red)',
+      edited: 'var(--accent)', pending_review: 'var(--yellow)', unknown: 'var(--muted)'
+    };
+    container.innerHTML = data.runs.map(run => `
+      <div style="display:flex; gap:12px; align-items:center; padding:8px; background:var(--bg); border-radius:6px; margin-bottom:6px; font-size:13px; flex-wrap:wrap;">
+        <span style="font-family:monospace; color:var(--muted); font-size:11px;">${run.thread_id}</span>
+        <span style="font-weight:600;">${escHtml(run.contact_name || 'Unknown')}</span>
+        <span style="color:${statusColors[run.status] || 'var(--muted)'};">${run.status || 'unknown'}</span>
+        <span style="color:var(--muted); margin-left:auto;">${run.created_at ? new Date(run.created_at).toLocaleString() : ''}</span>
+      </div>`).join('');
+  } catch(e) {
+    toast('Could not load runs: ' + e.message);
+  }
+}
+
+function showAction(action) {
+  ['approve','reject','edit','regenerate'].forEach(a => {
+    document.getElementById('form-' + a).classList.remove('active');
+  });
+  document.getElementById('form-' + action).classList.add('active');
+}
+
+function setRunning(running) {
+  document.getElementById('run-btn').disabled = running;
+  document.getElementById('run-spinner').style.display = running ? 'inline-block' : 'none';
+}
+
+function setStatus(text, type) {
+  const badge = document.getElementById('status-badge');
+  badge.textContent = text;
+  const colors = { processing: '#e0f2fe', review: '#fef9c3', done: '#dcfce7', error: '#fee2e2' };
+  badge.style.background = colors[type] || '#e0f2fe';
+}
+
+function escHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+window.onload = () => {
+  loadSample();
+  loadRuns();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "SG Cricket Bat English Willow",
+    "url": "https://www.amazon.in/dp/B09ABC12345",
+    "snippet": "SG Cricket Bat - English Willow. Price: ₹3,499. Free delivery. In stock.",
+    "query_source": "cricket gift India under 5000 rupees",
+    "query_type": "strong"
+  },
+  {
+    "title": "The Challenger Customer Hardcover",
+    "url": "https://www.amazon.in/dp/B08XYZ98765",
+    "snippet": "The Challenger Customer by Brent Adamson. Price: ₹2,199. Ships from Amazon.in",
+    "query_source": "business book gift India under 5000",
+    "query_type": "weak"
+  },
+  {
+    "title": "Premium Leather Passport Holder Corporate Gift",
+    "url": "https://www.amazon.in/p/corporate-gift-leather-passport",
+    "snippet": "Premium leather passport holder with power bank. ₹4,299. Corporate gift set. India delivery.",
+    "query_source": "premium professional gift VP Sales India",
+    "query_type": "fallback"
+  },
+  {
+    "title": "Cricket Jersey Customized",
+    "url": "https://www.flipkart.com/cricket-jersey-custom/p/itmaabc123",
+    "snippet": "Customized cricket jersey. ₹1,499. Flipkart. India.",
+    "query_source": "cricket gift India under 5000 rupees",
+    "query_type": "strong"
+  },
+  {
+    "title": "Generic Product No Price",
+    "url": "https://someunknownsite.com/product/123",
+    "snippet": "A generic product with no pricing information visible.",
+    "query_source": "test query",
+    "query_type": "fallback"
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Aarav Mehta",
+    "role": "VP Sales",
+    "company": "TechNova Solutions",
+    "location": "Mumbai, Maharashtra",
+    "linkedin_profile": {
+      "headline": "VP Sales | B2B SaaS | Cricket Enthusiast",
+      "about": "Passionate about sales. Love cricket.",
+      "experience": [
+        {"title": "VP Sales", "company": "TechNova", "description": "Leading 40-person team"}
+      ],
+      "recent_posts": [
+        "What a match! MI vs CSK — cricket is truly a religion in India",
+        "Just finished reading The Challenger Sale — highly recommend"
+      ],
+      "recent_comments": [],
+      "engaged_topics": ["Cricket", "B2B Sales", "SaaS"]
+    },
+    "relationship_context": {
+      "relationship_type": "prospective_customer",
+      "last_interaction": "Demo call 3 days ago",
+      "business_goal": "Convert to enterprise customer"
+    },
+    "gift_context": {
+      "occasion": "Post-demo follow-up",
+      "budget_min": 2000,
+      "budget_max": 5000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Priya Sharma",
+    "role": "CTO",
+    "company": "FinEdge Technologies",
+    "location": "Bangalore, Karnataka",
+    "linkedin_profile": {
+      "headline": "CTO | ML Infrastructure | Speaker at PyConIndia",
+      "about": "Building ML infrastructure at scale. Passionate about open source.",
+      "experience": [
+        {"title": "CTO", "company": "FinEdge", "description": "Leading engineering team of 80"}
+      ],
+      "recent_posts": [
+        "Great talk at PyConIndia on distributed training!",
+        "Kubernetes 1.30 release — finally better memory management"
+      ],
+      "recent_comments": [],
+      "engaged_topics": ["Machine Learning", "Kubernetes", "Open Source", "Python"]
+    },
+    "relationship_context": {
+      "relationship_type": "existing_customer",
+      "last_interaction": "Quarterly review last week",
+      "business_goal": "Upsell to enterprise ML tier"
+    },
+    "gift_context": {
+      "occasion": "Year-end appreciation gift",
+      "budget_min": 3000,
+      "budget_max": 8000,
+      "currency": "INR",
+      "country": "India"
+    }
+  }
+]

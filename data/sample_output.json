@@ -1,0 +1,98 @@
+{
+  "contact_name": "Aarav Mehta",
+  "profile_signals": {
+    "strong_signals": [
+      "interest in cricket — explicitly stated in posts and headline",
+      "reading 'The Challenger Sale' — mentioned in recent post",
+      "B2B SaaS sales leader — role and headline"
+    ],
+    "weak_signals": [
+      "may appreciate business strategy books — mentioned reading The Challenger Sale",
+      "likely follows IPL teams — posts about MI vs CSK"
+    ],
+    "signals_to_avoid": [
+      "Do not infer religion, politics, health, ethnicity, gender, family status, or other sensitive personal attributes"
+    ]
+  },
+  "search_trace": {
+    "queries_used": [
+      "cricket gift set India under 5000 rupees amazon.in",
+      "IPL cricket memorabilia India 2000 5000 rupees flipkart",
+      "business strategy book gift India under 5000 rupees",
+      "premium gift for VP Sales SaaS India under 5000 rupees"
+    ],
+    "products_considered_count": 12,
+    "validated_count": 7,
+    "escalation_triggered": false,
+    "retry_count": 0
+  },
+  "recommended_gifts": [
+    {
+      "rank": 1,
+      "gift_name": "SG Cricket Bat - RSD Xtreme English Willow",
+      "product_url": "https://www.amazon.in/SG-Cricket-Bat-Xtreme-English/dp/B09EXAMPLE1",
+      "store": "Amazon.in",
+      "estimated_price": "₹3,499",
+      "why_this_gift": "Aarav's LinkedIn profile and recent posts show a deep, genuine passion for cricket. He mentioned the MI vs CSK match enthusiastically, follows IPL religiously per his own words, and lists cricket in his engaged topics. A quality cricket bat directly speaks to this verified signal.",
+      "personalisation_reasoning": "Strong signal grounded in exact profile evidence: headline says 'Cricket Enthusiast', post says 'MI vs CSK last night — cricket is truly a religion in this country'. Gift aligns with the relationship type (prospective customer) — professional yet personal without being intrusive.",
+      "evidence_citations": [
+        "What a match! MI vs CSK last night — cricket is truly a religion in this country 🏏 #IPL2024",
+        "VP Sales | B2B SaaS | Cricket Enthusiast | Building Revenue Teams"
+      ],
+      "personalised_message": "Aarav, following your demo last week and seeing your cricket enthusiasm across your posts, we thought this might be a fitting way to say thanks for the time. Hope it sees some action this IPL season.",
+      "confidence_score": 0.82,
+      "risk_level": "low",
+      "assumptions": [
+        "Signal from posts — not a direct purchase request confirmation",
+        "Price confirmed from Amazon listing"
+      ]
+    },
+    {
+      "rank": 2,
+      "gift_name": "The Challenger Customer by Brent Adamson — Hardcover",
+      "product_url": "https://www.amazon.in/Challenger-Customer-Selling-Increasingly-Demanding/dp/B08EXAMPLE2",
+      "store": "Amazon.in",
+      "estimated_price": "₹2,199",
+      "why_this_gift": "Aarav explicitly mentioned reading 'The Challenger Sale' and recommending it to others. 'The Challenger Customer' is the companion book for senior sales leaders — a natural next step in the series. This gift shows you listened to his LinkedIn content.",
+      "personalisation_reasoning": "Direct signal: 'Just finished reading The Challenger Sale by Matthew Dixon — highly recommend for any B2B sales leader.' As a VP Sales who championed this book, the companion volume is the ideal next read.",
+      "evidence_citations": [
+        "Just finished reading 'The Challenger Sale' by Matthew Dixon — highly recommend for any B2B sales leader. Changed how I think about consultative selling."
+      ],
+      "personalised_message": "Aarav, you mentioned 'The Challenger Sale' changed how you think about selling — 'The Challenger Customer' picks up exactly where it left off, from the buyer's side. Thought you'd find it useful.",
+      "confidence_score": 0.79,
+      "risk_level": "low",
+      "assumptions": [
+        "Assumed Aarav has not already read The Challenger Customer",
+        "Signal from LinkedIn post — direct evidence"
+      ]
+    },
+    {
+      "rank": 3,
+      "gift_name": "Premium Leather Passport Holder with Power Bank — Corporate Gift Set",
+      "product_url": "https://www.amazon.in/Leather-Passport-Holder-Power-Corporate/dp/B07EXAMPLE3",
+      "store": "Amazon.in",
+      "estimated_price": "₹4,299",
+      "why_this_gift": "A professional travel accessory set is appropriate for a VP Sales who travels for enterprise deals and speaking events. This gift is safe for a prospective customer relationship — premium but not overly personal.",
+      "personalisation_reasoning": "Role-based signal: VP Sales at an enterprise SaaS company who speaks at summits likely travels frequently for deals and events. This is a professional, universally appropriate gift that fits the prospective_customer relationship type preference for neutral, premium gifts.",
+      "evidence_citations": [
+        "Excited to be speaking at SaaS Insider Summit next month on revenue operations",
+        "Closed ₹12Cr in ARR in FY24"
+      ],
+      "personalised_message": "Aarav, for someone speaking at summits and building enterprise deals across the country — hope this comes in handy on the road.",
+      "confidence_score": 0.71,
+      "risk_level": "medium",
+      "assumptions": [
+        "Assumed frequent travel based on speaking engagement and enterprise sales role",
+        "Product URL and price verified at time of generation"
+      ]
+    }
+  ],
+  "human_review": {
+    "status": "pending_review",
+    "available_actions": ["approve", "reject", "edit", "regenerate"]
+  },
+  "escalation_flag": false,
+  "escalation_notes": "",
+  "thread_id": "run_sample_output",
+  "generated_at": "2024-11-01T10:30:00.000Z"
+}

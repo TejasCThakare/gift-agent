@@ -1,0 +1,353 @@
+[
+  {
+    "name": "Aarav Mehta",
+    "role": "VP Sales",
+    "company": "Acme Corp",
+    "location": "Bengaluru, India",
+    "linkedin_profile": {
+      "headline": "VP Sales at Acme Corp | Enterprise SaaS | GTM Leadership",
+      "about": "I enjoy building high-performing revenue teams and scaling SaaS businesses across India and Southeast Asia.",
+      "experience": [
+        {
+          "title": "VP Sales",
+          "company": "Acme Corp",
+          "description": "Leading enterprise sales, strategic accounts, and GTM expansion."
+        },
+        {
+          "title": "Regional Sales Director",
+          "company": "Salesforce",
+          "description": "Managed enterprise accounts across BFSI and retail."
+        }
+      ],
+      "recent_posts": [
+        "Great sales teams are built on trust, coaching, and consistency.",
+        "India's SaaS ecosystem is entering an exciting new phase.",
+        "Still recovering from yesterday's India vs Australia match. What a game!"
+      ],
+      "recent_comments": [
+        "Completely agree — pipeline discipline matters more than heroic end-of-quarter selling.",
+        "Loved this take on customer-led growth.",
+        "Cricket teaches leadership better than most management books."
+      ],
+      "engaged_topics": [
+        "Cricket",
+        "Revenue leadership",
+        "SaaS GTM",
+        "Customer-led growth",
+        "Team building"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Prospective customer",
+      "last_interaction": "Positive discovery call last week",
+      "business_goal": "Nurture relationship before follow-up meeting"
+    },
+    "gift_context": {
+      "occasion": "Post-meeting thank you",
+      "budget_min": 3000,
+      "budget_max": 5000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Priya Sharma",
+    "role": "CTO",
+    "company": "FinEdge Technologies",
+    "location": "Hyderabad, India",
+    "linkedin_profile": {
+      "headline": "CTO at FinEdge | ML Infrastructure | PyConIndia Speaker",
+      "about": "Building ML infrastructure at scale. Passionate about open source contributions and the Python ecosystem.",
+      "experience": [
+        {
+          "title": "CTO",
+          "company": "FinEdge Technologies",
+          "description": "Leading engineering org of 80. Architecting ML platform for fintech."
+        },
+        {
+          "title": "Principal Engineer",
+          "company": "Flipkart",
+          "description": "Built recommendation systems serving 300M users."
+        }
+      ],
+      "recent_posts": [
+        "Just spoke at PyConIndia on distributed training — the energy in the room was incredible!",
+        "Kubernetes 1.30 release has some genuinely useful memory management improvements.",
+        "Open source is not charity — it is infrastructure. We all benefit when we contribute."
+      ],
+      "recent_comments": [
+        "Great talk on transformer fine-tuning. The LoRA section was especially clear.",
+        "This is exactly why we need better observability in ML pipelines."
+      ],
+      "engaged_topics": [
+        "Machine Learning",
+        "Kubernetes",
+        "Open Source",
+        "Python",
+        "Distributed Systems"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Existing customer",
+      "last_interaction": "Quarterly business review last week",
+      "business_goal": "Deepen technical partnership and upsell ML tier"
+    },
+    "gift_context": {
+      "occasion": "Year-end appreciation gift",
+      "budget_min": 3000,
+      "budget_max": 8000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Rohan Kapoor",
+    "role": "Founder and CEO",
+    "company": "BuildFast AI",
+    "location": "Mumbai, India",
+    "linkedin_profile": {
+      "headline": "Founder at BuildFast AI | YC W24 | Making AI accessible for SMBs",
+      "about": "Building the operating system for small businesses using AI. Previously product at Google. Love chess and long-form reading.",
+      "experience": [
+        {
+          "title": "Founder and CEO",
+          "company": "BuildFast AI",
+          "description": "YC W24. Raised $2M seed. Building AI workflow automation for SMBs."
+        },
+        {
+          "title": "Senior Product Manager",
+          "company": "Google",
+          "description": "Led product for Google Pay India merchant side."
+        }
+      ],
+      "recent_posts": [
+        "Six months since YC batch — here is what I got wrong about product-market fit.",
+        "Playing chess has made me a better founder. Pattern recognition is everything.",
+        "Just finished Zero to One by Peter Thiel for the third time. Still finding new things."
+      ],
+      "recent_comments": [
+        "The distribution problem is always harder than the product problem.",
+        "Endgame chess is pure logic — no intuition, just calculation."
+      ],
+      "engaged_topics": [
+        "Chess",
+        "Startups",
+        "AI products",
+        "Product management",
+        "Long-form reading"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Partner",
+      "last_interaction": "Co-hosted a webinar together last month",
+      "business_goal": "Strengthen partnership for joint GTM"
+    },
+    "gift_context": {
+      "occasion": "Partnership appreciation",
+      "budget_min": 2000,
+      "budget_max": 5000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Neha Joshi",
+    "role": "Head of Marketing",
+    "company": "ZestCommerce",
+    "location": "Pune, India",
+    "linkedin_profile": {
+      "headline": "Head of Marketing at ZestCommerce | D2C Growth | Brand Strategy",
+      "about": "I help D2C brands grow through content, community, and data-driven campaigns. Avid reader of marketing case studies.",
+      "experience": [
+        {
+          "title": "Head of Marketing",
+          "company": "ZestCommerce",
+          "description": "Scaled organic traffic 4x. Built influencer and affiliate programs from scratch."
+        },
+        {
+          "title": "Growth Manager",
+          "company": "Nykaa",
+          "description": "Managed paid acquisition and retention for beauty category."
+        }
+      ],
+      "recent_posts": [
+        "The best D2C brands do not just sell products — they build communities.",
+        "Just finished reading Contagious by Jonah Berger. Every marketer should read this.",
+        "Our new campaign just crossed 1M views in 48 hours. Grateful for the team!"
+      ],
+      "recent_comments": [
+        "Storytelling is still the most underrated growth lever.",
+        "This breakdown of Zomato's brand voice is brilliant."
+      ],
+      "engaged_topics": [
+        "D2C marketing",
+        "Brand building",
+        "Content strategy",
+        "Growth marketing",
+        "Marketing books"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Existing customer",
+      "last_interaction": "Campaign review call two days ago",
+      "business_goal": "Renew annual contract and expand to two new product lines"
+    },
+    "gift_context": {
+      "occasion": "Contract renewal appreciation",
+      "budget_min": 2000,
+      "budget_max": 4000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Vikram Nair",
+    "role": "Managing Director",
+    "company": "Nair Capital Advisors",
+    "location": "Chennai, India",
+    "linkedin_profile": {
+      "headline": "MD at Nair Capital | Private Equity | Board Advisor | Badminton enthusiast",
+      "about": "25 years in private equity and M&A across India and Southeast Asia. Board member at three portfolio companies. Play badminton every morning.",
+      "experience": [
+        {
+          "title": "Managing Director",
+          "company": "Nair Capital Advisors",
+          "description": "Managing $400M fund. Focus on healthcare, logistics, and consumer."
+        },
+        {
+          "title": "Director",
+          "company": "McKinsey and Company",
+          "description": "Strategy and M&A advisory for Fortune 500 clients in Asia."
+        }
+      ],
+      "recent_posts": [
+        "India's private markets are more resilient than the headlines suggest.",
+        "My badminton coach just retired after 30 years. A true legend of the sport.",
+        "The best board members ask uncomfortable questions at the right time."
+      ],
+      "recent_comments": [
+        "Valuation discipline is everything in a down market.",
+        "PV Sindhu's consistency is a masterclass in mental toughness."
+      ],
+      "engaged_topics": [
+        "Badminton",
+        "Private equity",
+        "Board governance",
+        "M&A",
+        "India economy"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Prospective customer",
+      "last_interaction": "Introduction via mutual connection, first call scheduled",
+      "business_goal": "Establish trust before formal pitch"
+    },
+    "gift_context": {
+      "occasion": "First meeting gift",
+      "budget_min": 4000,
+      "budget_max": 8000,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Anjali Desai",
+    "role": "Senior Product Manager",
+    "company": "MediTrack Health",
+    "location": "Bangalore, India",
+    "linkedin_profile": {
+      "headline": "Senior PM at MediTrack | Health Tech | Patient Experience | Runner",
+      "about": "Building products that make healthcare more human. Currently focused on patient engagement and care coordination. Training for my second half marathon.",
+      "experience": [
+        {
+          "title": "Senior Product Manager",
+          "company": "MediTrack Health",
+          "description": "Owns patient-facing mobile product with 2M active users."
+        },
+        {
+          "title": "Product Manager",
+          "company": "Practo",
+          "description": "Built doctor discovery and appointment booking features."
+        }
+      ],
+      "recent_posts": [
+        "Just crossed 18km in training. Half marathon in 6 weeks — feeling ready.",
+        "Good product thinking starts with deep empathy for the user's actual problem.",
+        "Finished Inspired by Marty Cagan last night. Essential reading for every PM."
+      ],
+      "recent_comments": [
+        "Running has taught me more about consistency than any productivity framework.",
+        "The best products make people feel understood, not just served."
+      ],
+      "engaged_topics": [
+        "Running",
+        "Product management",
+        "Health technology",
+        "User research",
+        "Books"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Colleague",
+      "last_interaction": "Joint workshop on product strategy yesterday",
+      "business_goal": "Strengthen working relationship for upcoming collaboration"
+    },
+    "gift_context": {
+      "occasion": "Team appreciation",
+      "budget_min": 1500,
+      "budget_max": 3500,
+      "currency": "INR",
+      "country": "India"
+    }
+  },
+  {
+    "name": "Sameer Kulkarni",
+    "role": "Director of Engineering",
+    "company": "LogiStack",
+    "location": "Bangalore, India",
+    "linkedin_profile": {
+      "headline": "Director of Engineering at LogiStack | Distributed Systems | Guitar Player",
+      "about": "Leading backend engineering at LogiStack. Obsessed with system design, clean code, and mentoring engineers. Play guitar on weekends.",
+      "experience": [
+        {
+          "title": "Director of Engineering",
+          "company": "LogiStack",
+          "description": "Leading 35-person backend team building real-time logistics infrastructure."
+        },
+        {
+          "title": "Staff Engineer",
+          "company": "Swiggy",
+          "description": "Built order routing and fulfillment systems for 10M daily orders."
+        }
+      ],
+      "recent_posts": [
+        "System design interviews test the wrong things. Let us talk about what actually matters.",
+        "Spent the weekend learning fingerpicking on guitar — humbling and meditative.",
+        "The best engineers I have worked with share one trait: intellectual curiosity."
+      ],
+      "recent_comments": [
+        "Kafka is still the right choice for event streaming at this scale.",
+        "Nothing beats playing an instrument to reset after a hard week."
+      ],
+      "engaged_topics": [
+        "Guitar",
+        "System design",
+        "Engineering leadership",
+        "Distributed systems",
+        "Mentoring"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Executive",
+      "last_interaction": "Technical deep dive call three days ago",
+      "business_goal": "Win technical champion before procurement decision"
+    },
+    "gift_context": {
+      "occasion": "Post technical evaluation thank you",
+      "budget_min": 2000,
+      "budget_max": 5000,
+      "currency": "INR",
+      "country": "India"
+    }
+  }
+]

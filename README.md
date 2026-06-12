@@ -2,7 +2,7 @@
 
 An AI workflow that takes a LinkedIn-style contact profile and returns three personalised, purchasable gift recommendations — with grounded reasoning, real product URLs, deterministic confidence scores, and a human review step before the output is finalised.
 
-**Demo:** [Watch on Google Drive](#) ← add your link here
+**Demo:** [Watch on Google Drive](https://drive.google.com/file/d/1UAZwce1O1i1p2qP_XcWevORRSpbOCjNd/view?usp=sharing)
 
 ---
 

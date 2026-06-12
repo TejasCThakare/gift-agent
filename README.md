@@ -327,41 +327,55 @@ gift-agent/
 
 ```json
 {
-  "name": "Aarav Mehta",
-  "role": "VP Sales",
-  "company": "Acme Corp",
-  "location": "Bengaluru, India",
-  "linkedin_profile": {
-    "headline": "VP Sales at Acme Corp | Enterprise SaaS | GTM Leadership",
-    "about": "I enjoy building high-performing revenue teams...",
-    "experience": [
-      {
-        "title": "VP Sales",
-        "company": "Acme Corp",
-        "description": "Leading enterprise sales, strategic accounts, and GTM expansion."
-      }
-    ],
-    "recent_posts": [
-      "Still recovering from yesterday's India vs Australia match. What a game!"
-    ],
-    "recent_comments": [
-      "Cricket teaches leadership better than most management books."
-    ],
-    "engaged_topics": ["Cricket", "Revenue leadership", "SaaS GTM"]
-  },
-  "relationship_context": {
-    "relationship_type": "Prospective customer",
-    "last_interaction": "Positive discovery call last week",
-    "business_goal": "Nurture relationship before follow-up meeting"
-  },
-  "gift_context": {
-    "occasion": "Post-meeting thank you",
-    "budget_min": 3000,
-    "budget_max": 5000,
-    "currency": "INR",
-    "country": "India"
+    "name": "Rohan Kapoor",
+    "role": "Founder and CEO",
+    "company": "BuildFast AI",
+    "location": "Mumbai, India",
+    "linkedin_profile": {
+      "headline": "Founder at BuildFast AI | YC W24 | Making AI accessible for SMBs",
+      "about": "Building the operating system for small businesses using AI. Previously product at Google. Love chess and long-form reading.",
+      "experience": [
+        {
+          "title": "Founder and CEO",
+          "company": "BuildFast AI",
+          "description": "YC W24. Raised $2M seed. Building AI workflow automation for SMBs."
+        },
+        {
+          "title": "Senior Product Manager",
+          "company": "Google",
+          "description": "Led product for Google Pay India merchant side."
+        }
+      ],
+      "recent_posts": [
+        "Six months since YC batch — here is what I got wrong about product-market fit.",
+        "Playing chess has made me a better founder. Pattern recognition is everything.",
+        "Just finished Zero to One by Peter Thiel for the third time. Still finding new things."
+      ],
+      "recent_comments": [
+        "The distribution problem is always harder than the product problem.",
+        "Endgame chess is pure logic — no intuition, just calculation."
+      ],
+      "engaged_topics": [
+        "Chess",
+        "Startups",
+        "AI products",
+        "Product management",
+        "Long-form reading"
+      ]
+    },
+    "relationship_context": {
+      "relationship_type": "Partner",
+      "last_interaction": "Co-hosted a webinar together last month",
+      "business_goal": "Strengthen partnership for joint GTM"
+    },
+    "gift_context": {
+      "occasion": "Partnership appreciation",
+      "budget_min": 2000,
+      "budget_max": 5000,
+      "currency": "INR",
+      "country": "India"
+    }
   }
-}
 ```
 
 All fields except `name` have defaults. `budget_min` and `budget_max` are normalised at ingest (min/max swapped if inverted). `relationship_type` accepts natural language values like "Prospective customer" or "existing customer" and is normalised to a standard key.
@@ -372,46 +386,85 @@ All fields except `name` have defaults. `budget_min` and `budget_max` are normal
 
 ```json
 {
-  "contact_name": "Aarav Mehta",
+  "contact_name": "Rohan Kapoor",
   "profile_signals": {
     "strong_signals": [
-      "Interested in cricket",
-      "Reads business strategy books"
+      "interested in chess",
+      "enjoys long-form reading",
+      "reads business strategy books"
     ],
-    "weak_signals": [
-      "May appreciate leadership or business books"
-    ],
+    "weak_signals": [],
     "signals_to_avoid": [
-      "Do not infer religion, politics, health, family status, or other sensitive personal attributes"
+      "Do not infer religion, politics, health, ethnicity, gender, family status, or other sensitive personal attributes"
     ]
   },
   "search_trace": {
     "queries_used": [
-      "SG cricket bat site:amazon.in under 5000 rupees",
-      "business book bestseller site:amazon.in under 5000 rupees"
+      "chess set premium site:amazon.in under 5000 rupees",
+      "strategy board game site:flipkart.com under 5000 rupees",
+      "business book bestseller site:amazon.in under 5000 rupees",
+      "leadership book gift site:amazon.in under 5000 rupees",
+      "leather notebook premium site:amazon.in under 5000 rupees",
+      "luxury pen set site:amazon.in under 5000 rupees",
+      "premium professional gift site:amazon.in under 5000 rupees"
     ],
     "products_considered_count": 15
   },
   "recommended_gifts": [
     {
       "rank": 1,
-      "gift_name": "SG Cricket Bat RSD Spark",
-      "product_url": "https://www.amazon.in/dp/B09XXXXXXXX",
+      "gift_name": "ChessBase India Premium Chess Set (Green), Kids",
+      "product_url": "https://www.amazon.in/ChessBase-India-Premium-Chess-Green/dp/B09RFXCPZS",
       "store": "Amazon.in",
-      "estimated_price": "₹3,499",
-      "why_this_gift": "Aarav mentions cricket multiple times across posts and comments...",
-      "personalisation_reasoning": "Signal grounded in post: 'Still recovering from yesterday's India vs Australia match'",
-      "personalised_message": "Aarav, thought this might come in handy the next time India plays.",
-      "confidence_score": 0.85,
+      "estimated_price": "Price on product page",
+      "why_this_gift": "This gift is suitable because the contact has expressed interest in chess, as evident from the statement 'Love chess'. The ChessBase India Premium Chess Set is a high-quality product that aligns with the contact's interest.",
+      "personalisation_reasoning": "The contact's interest in chess is a strong signal, as seen in the evidence map with quotes such as 'Love chess' and 'Playing chess has made me a better founder. Pattern recognition is everything.'",
+      "personalised_message": "Mr. Rohan Kapoor, I am pleased to offer this ChessBase India Premium Chess Set as a symbol of our partnership's strategic growth, reflecting your appreciation for the game of chess and its impact on your approach to founding BuildFast AI.",
+      "confidence_score": 0.86,
       "risk_level": "low",
       "assumptions": [
-        "Interest in cricket confirmed from multiple posts and comments"
+        "The contact values high-quality products"
+      ]
+    },
+    {
+      "rank": 2,
+      "gift_name": "BHARATA 600 BC Strategy & War Board Game - Flipkart",
+      "product_url": "https://www.flipkart.com/goindia-games-bharata-600-bc-strategy-war-board-game/p/itmd92f3f97ad901",
+      "store": "Flipkart",
+      "estimated_price": "Price on product page",
+      "why_this_gift": "This gift is suitable because the contact enjoys long-form reading and reads business strategy books, as seen in the evidence map. The BHARATA 600 BC Strategy & War Board Game is a strategy game that aligns with the contact's interests.",
+      "personalisation_reasoning": "The contact's interest in business strategy books, such as 'Zero to One by Peter Thiel', suggests that they value strategic thinking. The BHARATA 600 BC Strategy & War Board Game is a product that caters to this interest.",
+      "personalised_message": "Mr. Rohan Kapoor, as someone who values long-form reading and business strategy, I believe you will appreciate the BHARATA 600 BC Strategy & War Board Game, which combines these interests in a unique and engaging way, much like your thoughtful approach to business and partnership.",
+      "confidence_score": 0.86,
+      "risk_level": "low",
+      "assumptions": [
+        "The contact enjoys strategy games"
+      ]
+    },
+    {
+      "rank": 3,
+      "gift_name": "TRIFECTA Business Game with Money Notes - Fun Board Game for ...",
+      "product_url": "https://www.flipkart.com/trifecta-business-game-money-notes-fun-board-young-businessmen-strategy-war-games/p/itmccbcf3e532d22",
+      "store": "Flipkart",
+      "estimated_price": "Price on product page",
+      "why_this_gift": "This gift is suitable because the contact reads business strategy books and enjoys long-form reading. The TRIFECTA Business Game with Money Notes is a product that aligns with the contact's interests in business and strategy.",
+      "personalisation_reasoning": "The contact's interest in business strategy books and long-form reading suggests that they value products that simulate real-world business scenarios. The TRIFECTA Business Game with Money Notes is a product that caters to this interest.",
+      "personalised_message": "Mr. Rohan Kapoor, in recognition of our partnership and your interest in business strategy, I am delighted to present the TRIFECTA Business Game with Money Notes, a gift that aligns with your enjoyment of business strategy books and long-form reading, reflecting our shared commitment to strategic growth and partnership.",
+      "confidence_score": 0.86,
+      "risk_level": "low",
+      "assumptions": [
+        "The contact values interactive business simulations"
       ]
     }
   ],
   "human_review": {
     "status": "pending_review",
-    "available_actions": ["approve", "reject", "edit", "regenerate"]
+    "available_actions": [
+      "approve",
+      "reject",
+      "edit",
+      "regenerate"
+    ]
   }
 }
 ```
